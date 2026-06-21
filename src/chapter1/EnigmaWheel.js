@@ -6,7 +6,7 @@ const STEP = (Math.PI * 2) / LETTERS.length;
 const POINTER_ANGLE = -Math.PI / 2; // selected letter sits at the top
 
 // A rotating ring of 26 letters. Arrow/A-D keys spin it one letter per press (a
-// 120ms tween); Space/Enter confirms the highlighted letter. The hint row beneath
+// 120ms tween); Space confirms the highlighted letter. The hint row beneath
 // shows the key in progress — known letters white, blanks dim grey.
 export default class EnigmaWheel extends Phaser.GameObjects.Container {
   constructor(scene, x, y) {
@@ -136,8 +136,10 @@ export default class EnigmaWheel extends Phaser.GameObjects.Container {
     kb.on('keydown-A', () => this._rotate(-1));
     kb.on('keydown-RIGHT', () => this._rotate(1));
     kb.on('keydown-D', () => this._rotate(1));
+    // Confirm is SPACE only — not ENTER. The ENTER used to dismiss the title card /
+    // advance scenes would otherwise leak into the freshly-enabled wheel and confirm
+    // a stray letter, corrupting the first key. The HUD advertises "SPACE confirm".
     kb.on('keydown-SPACE', () => this.confirmLetter());
-    kb.on('keydown-ENTER', () => this.confirmLetter());
   }
 
   // Step the selection by one letter and tween the ring to match. A relative tween
