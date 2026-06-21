@@ -16,6 +16,13 @@ dist-ssr
 # Environment
 .env
 
+# Project docs kept out of the published repo (they live in the parent directory)
+CLAUDE.md
+ARCHITECTURE.md
+
+# Vercel
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
