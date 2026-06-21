@@ -466,10 +466,10 @@ export const CREDITS = {
 };
 
 export const GEMINI = {
-  // Current unified SDK (@google/genai) + a model on Google's free tier. Thinking
-  // is disabled (budget 0): SIGNAL's short creative prose gains nothing from
-  // reasoning tokens, and turning it off keeps calls fast and frugal on free quota.
-  MODEL: 'gemini-2.5-flash',
+  // Current unified SDK (@google/genai). flash-lite is the cheapest/highest-quota
+  // model on Google's free tier — ideal here since SIGNAL only needs short creative
+  // prose. Thinking is disabled (budget 0): no reasoning tokens, faster + frugal calls.
+  MODEL: 'gemini-2.5-flash-lite',
   THINKING_BUDGET: 0,
   MAX_OUTPUT_TOKENS: 300,
   TEMPERATURE: 0.8,
